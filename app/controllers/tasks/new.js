@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     actions: {
-        addTask: function() {
+        addTask() {
             let title = this.get('title');
             let date = this.get('date');
             let description = this.get('description');

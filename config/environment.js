@@ -9,7 +9,7 @@ module.exports = function(environment) {
       'connect-src': "'self' wss://*.firebaseio.com"
     },
     firebase: {
-      apiKey: "",
+      apiKey: "AIzaSyBjOgn32MJDGPE4o8e2RL3zBjDOSSWytKI",
       authDomain: "ember-tasks-1f3d6 .firebaseapp.com",
       databaseURL: "https://ember-tasks-1f3d6.firebaseio.com",
       // storageBucket: "bucket.appspot.com"
@@ -30,6 +30,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      sessionTimeout: 1200000
     }
   };
 
@@ -39,6 +40,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.sessionTimeout = 180000000000;
   }
 
   if (environment === 'test') {
@@ -50,6 +52,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.sessionTimeout = null;
   }
 
   if (environment === 'production') {

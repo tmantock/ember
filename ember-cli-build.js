@@ -6,6 +6,9 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    babel: {
+      includePolyfill: true
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -21,5 +24,6 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+  app.import('bower_components/moment/min/moment.min.js');
   return app.toTree();
 };

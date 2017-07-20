@@ -5,7 +5,7 @@ export default DS.Model.extend({
     description: DS.attr('string'),
     date: DS.attr('date'),
     created: DS.attr('string', {
-        defualtValue: function() {
+        defaultValue: function() {
             return new Date();
         }
     })
