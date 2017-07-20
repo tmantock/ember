@@ -11,7 +11,6 @@ export default Ember.Route.extend({
         setProp() {
             let foobar = Ember.get(this, 'foobar');
             foobar.setProperty('ember');
-            console.log(foobar.getProperty());
         }
     }
 });

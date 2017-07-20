@@ -9,7 +9,6 @@ export default Ember.Route.extend({
         let deferred = Ember.get(this, 'deferredTransition');
 
         if(!Ember.get(this, 'session').isAuthenticated()) {
-            console.log(transition);
             deferred.setTransition(transition);
             this.transitionTo('application');
         }
