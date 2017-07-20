@@ -1,0 +1,9 @@
+<h1>Route Loop</h1>
+
+{{#if shouldShowComponent}}
+    {{render-component}}
+{{else}}
+    <h4>Can't see me</h4>
+{{/if}}
+
+<button class="btn btn-priamry" {{ action "clickAction"}}>Hide</button>

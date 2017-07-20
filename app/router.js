@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('edit', { path: '/edit/:task_id' });
   });
   this.route('profile');
+  this.route('run-loop');
 });
 
 export default Router;

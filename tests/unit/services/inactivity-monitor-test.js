@@ -1,6 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 import sinon from 'sinon';
-import Ember, { run } from 'ember';
+import Ember from 'ember';
+
+const { Service } = Ember;
 
 let clock;
 moduleFor('service:inactivity-monitor', 'Unit | Service | inactivity monitor', {
@@ -43,9 +45,29 @@ test('`resetTimeout` resets our timeout and prevents logout', function(assert) {
   let service = this.subject({
     inactivityTimeout: 1000,
     didBecomeInactive
-    
   });
 
   service.resetTimeout();
   clock.tick(1000);
+});
+
+test('`didBecomeInactive` log the user out after inactivity', function(assert) {
+  assert.expect(1);
+  let sessionStud = Service.extend({
+    isAuthenticated() {
+      assert.ok(true, 'user auth');
+      return true;
+    },
+
+    logout() {
+      assert.ok(true, 'user is logged out');
+    }
+  });
+
+  let service = this.subject();
+
+  this.register('service:session', sessionStud);
+  this.inject.service('session', { as: 'session' });
+
+  service.didBecomeInactive();
 });

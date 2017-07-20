@@ -1,22 +1,23 @@
 import Ember from 'ember';
 import ENV from 'ember-quickstart/config/environment';
+const { inject: { service }, run: { later, cancel, throttle }, get, set, $ } = Ember;
 
 export default Ember.Service.extend({
-    session: Ember.inject.service(),
+    session: service(),
     inactivityTimeout: ENV.APP.sessionTimeout,
     userEvents: ['mousemove', 'touchmove', 'keydown'],
     timeoutTimer: null,
     throttleAction: null,
     
     resetTimeout() {
-        Ember.run.cancel(Ember.get(this, 'timeoutTimer'));
-        let inactivityTimeout = Ember.get(this, 'inactivityTimeout');
-        let timeoutTimer = Ember.run.later(this, 'didBecomeInactive', inactivityTimeout);
-        Ember.set(this, 'timeoutTimer', timeoutTimer);
+        cancel(get(this, 'timeoutTimer'));
+        let inactivityTimeout = get(this, 'inactivityTimeout');
+        let timeoutTimer = later(this, 'didBecomeInactive', inactivityTimeout);
+        set(this, 'timeoutTimer', timeoutTimer);
     },
 
     didBecomeInactive() {
-        let session = Ember.get(this, 'session');
+        let session = get(this, 'session');
 
         if(session.isAuthenticated()) {
             session.logout();
@@ -24,18 +25,18 @@ export default Ember.Service.extend({
     },
 
     setupWindowEvents() {
-        let events = Ember.get(this, 'userEvents').map(e => `${e}.inactivityMonitor`).join(' ');
-        Ember.$(window).on(events, () => {
-            let throttleAction = Ember.run.throttle(this, 'resetTimeout', 1000);
-            Ember.set(this, 'throttleAction', throttleAction);
+        let events = get(this, 'userEvents').map(e => `${e}.inactivityMonitor`).join(' ');
+        $(window).on(events, () => {
+            let throttleAction = throttle(this, 'resetTimeout', 1000);
+            set(this, 'throttleAction', throttleAction);
         });
     },
 
     willDestroy() {
         this._super(...arguments);
 
-        Ember.$(window).off('.inactivityMonitor');
-        Ember.run.cancel(Ember.get(this, 'timeoutTimer'));
-        Ember.run.cancel(Ember.get(this, 'throttleAction'));
+        $(window).off('.inactivityMonitor');
+        cancel(get(this, 'timeoutTimer'));
+        cancel(get(this, 'throttleAction'));
     }
 });
