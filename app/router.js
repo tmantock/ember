@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('profile');
   this.route('run-loop');
   this.route('posts');
+  this.route('users');
 });
 
 export default Router;
