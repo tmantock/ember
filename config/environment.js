@@ -10,7 +10,7 @@ module.exports = function(environment) {
     },
     firebase: {
       apiKey: "AIzaSyBjOgn32MJDGPE4o8e2RL3zBjDOSSWytKI",
-      authDomain: "ember-tasks-1f3d6 .firebaseapp.com",
+      authDomain: "ember-tasks-1f3d6.firebaseapp.com",
       databaseURL: "https://ember-tasks-1f3d6.firebaseio.com",
       // storageBucket: "bucket.appspot.com"
     },

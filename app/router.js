@@ -13,6 +13,7 @@ Router.map(function() {
   });
   this.route('profile');
   this.route('run-loop');
+  this.route('posts');
 });
 
 export default Router;

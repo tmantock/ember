@@ -1,4 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
+import wait from 'ember-test-helpers/wait';
 import sinon from 'sinon';
 import Ember from 'ember';
 
@@ -38,7 +39,10 @@ test('`setupWindowEvents` properly throttles action', function(assert) {
 });
 
 test('`resetTimeout` resets our timeout and prevents logout', function(assert) {
+  let async = false;
   let didBecomeInactive = function() {
+    async = true;
+    console.log(async);
     assert.ok(true, 'user became inactive');
   }
 
@@ -49,11 +53,15 @@ test('`resetTimeout` resets our timeout and prevents logout', function(assert) {
 
   service.resetTimeout();
   clock.tick(1000);
+
+  return wait().then(() => {
+    assert.equal(async, true);
+  });
 });
 
 test('`didBecomeInactive` log the user out after inactivity', function(assert) {
   assert.expect(1);
-  let sessionStud = Service.extend({
+  let sessionStub = Service.extend({
     isAuthenticated() {
       assert.ok(true, 'user auth');
       return true;
@@ -66,7 +74,7 @@ test('`didBecomeInactive` log the user out after inactivity', function(assert) {
 
   let service = this.subject();
 
-  this.register('service:session', sessionStud);
+  this.register('service:session', sessionStub);
   this.inject.service('session', { as: 'session' });
 
   service.didBecomeInactive();

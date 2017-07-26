@@ -1,7 +1,7 @@
 import Ember from 'ember';
 const { Controller, run, set } = Ember;
 
-export default Ember.Controller.extend({
+export default Controller.extend({
     shouldShowComponent: true,
 
     actions: {
