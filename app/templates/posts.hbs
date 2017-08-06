@@ -1,0 +1,7 @@
+{{#each model as |post|}}
+    <div>
+        <h3>Title: {{post.title}}</h3>
+        <p>Author: {{post.userId.name}}</p>
+        <p>Body: {{post.body}}</p>
+    </div>
+{{/each}}

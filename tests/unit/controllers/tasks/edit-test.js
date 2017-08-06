@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:tasks', 'Unit | Controller | tasks', {
+moduleFor('controller:tasks/edit', 'Unit | Controller | tasks/edit', {
   // Specify the other units that are required for this test.
-  needs: ['service:foobar']
+  // needs: ['controller:foo']
 });
 
 // Replace this with your real tests.

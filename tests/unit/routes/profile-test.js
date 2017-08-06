@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:tasks', 'Unit | Route | tasks', {
+moduleFor('route:profile', 'Unit | Route | profile', {
   // Specify the other units that are required for this test.
-  needs: ['service:foobar']
+  needs: ['service:session', 'service:deferredTransition']
 });
 
 test('it exists', function(assert) {

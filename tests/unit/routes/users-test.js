@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:tasks', 'Unit | Route | tasks', {
+moduleFor('route:users', 'Unit | Route | users', {
   // Specify the other units that are required for this test.
-  needs: ['service:foobar']
+  // needs: ['controller:foo']
 });
 
 test('it exists', function(assert) {
