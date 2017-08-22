@@ -13,7 +13,9 @@ Router.map(function() {
   });
   this.route('profile');
   this.route('run-loop');
-  this.route('posts');
+  this.route('posts', function() {
+    this.route('show', { path: '/show/:post_id'});
+  });
   this.route('users');
 });
 

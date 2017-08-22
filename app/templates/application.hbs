@@ -14,10 +14,18 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-         <li>{{#link-to 'application'}}Home{{/link-to}}</li> 
-        <li>{{#link-to 'tasks'}}Tasks{{/link-to}}</li>
-        <li>{{#link-to 'tasks.new'}}New{{/link-to}}</li>
-        <li>{{#link-to 'profile'}}Profile{{/link-to}}</li>
+        {{#link-to 'application' tagName='li'}}<a href="">Home</a>{{/link-to}}
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Tasks<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            {{#link-to 'tasks' tagName='li'}}<a href="">List</a>{{/link-to}}
+            {{#link-to 'tasks.new' tagName='li'}}<a href="">New</a>{{/link-to}}
+          </ul>
+        </li>
+        {{#link-to 'posts' tagName='li'}}<a href="">Posts</a>{{/link-to}}
+        {{#link-to 'profile' tagName='li'}}<a href="">Profile</a>{{/link-to}}
       </ul>
     </div>
   </div>

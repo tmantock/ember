@@ -1,8 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    model() {
+    queryParams: {
+        search: {
+            refreshModel: true
+        }
+    },
+
+    model(params) {
         // console.log(this.store);
-        return this.store.findAll('post');
+        return this.store.find('post', params);
+    },
+
+    setupController(controller, model) {
+        this._super(...arguments);
+        controller.set('queryParams', ['search']),
+        controller.set('search', '');
     }
 });
