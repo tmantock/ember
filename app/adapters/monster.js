@@ -1,7 +1,8 @@
 import Mirage from './mirage';
+import Ember from 'ember';
 
 export default Mirage.extend({
-    pathForType() {
+    pathForType(type) {
         return 'monsters';
-    }
+    },
 });

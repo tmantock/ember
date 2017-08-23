@@ -1,0 +1,8 @@
+<ul>
+    {{#each model as |monster|}}
+        <li class="monster">
+            <span>{{ monster.name }}</span>
+            {{#link-to 'monsters.show' monster.id class="btn btn-primary"}}Click Me{{/link-to}}
+        </li>
+    {{/each}}
+</ul>
