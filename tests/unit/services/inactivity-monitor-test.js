@@ -42,7 +42,6 @@ test('`resetTimeout` resets our timeout and prevents logout', function(assert) {
   let async = false;
   let didBecomeInactive = function() {
     async = true;
-    console.log(async);
     assert.ok(true, 'user became inactive');
   }
 

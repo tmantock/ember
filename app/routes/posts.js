@@ -12,7 +12,7 @@ export default Ember.Route.extend({
         return this.store.find('post', params);
     },
 
-    setupController(controller, model) {
+    setupController(controller) {
         this._super(...arguments);
         controller.set('queryParams', ['search']),
         controller.set('search', '');

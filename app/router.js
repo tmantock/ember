@@ -17,6 +17,7 @@ Router.map(function() {
     this.route('show', { path: '/show/:post_id'});
   });
   this.route('users');
+  this.route('monsters');
 });
 
 export default Router;

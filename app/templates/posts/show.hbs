@@ -1,0 +1,18 @@
+<div>
+    <h3>Title: {{post.title}}</h3>
+    <p>Price: {{format-currency 10000 locale="en-us" currency="USD"}}</p>
+    <p>Author: {{post.userId.name}}</p>
+    <p>Body: {{post.body}}</p>
+</div>
+<div>
+    <ul>
+        {{#each comments as |comment|}}
+            <ul>
+                <li>Name: {{comment.name}}</li>
+                <li>Email: {{comment.email}}</li>
+                <li>Body: {{comment.body}}</li>
+            </ul>
+            <hr>
+        {{/each}}
+    </ul>
+</div>

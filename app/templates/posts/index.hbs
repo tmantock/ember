@@ -1,0 +1,10 @@
+{{input type="text" class="form-control" title="Search" value=search}}
+
+{{#each model as |post|}}
+    <div>
+        <h3>Title: {{#link-to 'posts.show' post.id}} {{post.title}} {{/link-to}}</h3>
+        <p>Price: {{format-currency 10000 locale="en-us" currency="USD"}}</p>
+        <p>Author: {{post.userId.name}}</p>
+        <p>Body: {{post.body}}</p>
+    </div>
+{{/each}}
